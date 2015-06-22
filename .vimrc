@@ -5,14 +5,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "required
 Plugin 'tpope/vim-fugitive' "required 
 Plugin 'mattn/emmet-vim' "Emmet
-Plugin 'Shougo/neocomplcache.vim' "자동완성
 Plugin 'nathanaelkane/vim-indent-guides' "indent 깊이 선으로 표현
 Plugin 'https://github.com/Lokaltog/vim-powerline.git' "powerline
-
+Plugin 'https://github.com/scrooloose/nerdtree.git' "Tree filesystem
+Plugin 'altercation/vim-colors-solarized' "color
+Plugin 'kien/ctrlp.vim'
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
 let g:Powerline_symbols = 'fancy'
+nmap <F7> :NERDTree<CR>
 set laststatus=2
 set nocompatible    " Vim 디폴트 기능들을 사용함
 set backspace=2     " 삽입 모드에서 백스페이스를 계속 허용
@@ -37,5 +39,7 @@ set title           " 타이틀바에 현재 편집중인 파일을 표시
 set nu              " 라인번호
 set enc=UTF-8       " 인코딩
 set fileencodings=UTF-8 " 파일 인코딩 UTF-8
+colorscheme solarized
+set background=dark
 syntax on           " 문법 강조기능
 
