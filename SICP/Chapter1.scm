@@ -1,10 +1,10 @@
-# Chapter 1
+;; Chapter 1
 1.1
-# 순서대로 답
-10, 12, 8, 3, 6, a, b, 19, #f, 4, 16, 6, 16,
+;; 순서대로 답
+10, 12, 8, 3, 6, a, b, 19, ;;f, 4, 16, 6, 16,
 
 1.2
-#앞 가지 쓰기 꼴
+;;앞 가지 쓰기 꼴
 (/  (+5
       4
       (-2(-3(+6(/4 5)))))
@@ -13,7 +13,7 @@
       (- 2 7 )))
 
 1.3
-#세 숫자 인자로 받아 그 가운데 숫자 두개를 제곱한다음, 그 두값을 덧셈하여 내놓는 프로시저
+;;세 숫자 인자로 받아 그 가운데 숫자 두개를 제곱한다음, 그 두값을 덧셈하여 내놓는 프로시저
 (define (square x) (* x x) )
 (define (sum-of-squares x y) (+ (square x) (square y)))
 (define (sum-of-squared-largest-two x y z)
@@ -24,18 +24,18 @@
 (define (a-plus-abs-b a b)
   ((if (> b 0) + -) a b)
 
-(a-plus-abs-b 10 2) # 12
-(a-plus-abs-b 10 -1) # 11
+(a-plus-abs-b 10 2) ;; 12
+(a-plus-abs-b 10 -1) ;; 11
 
 
 1.5
 (test 0 (p))
 (if (= 0 0) 0 (p))
-(if #t 0 (p))
+(if ;;t 0 (p))
 0
 
 1.6
-#good-enough? 원형
+;;good-enough? 원형
 (define (sqrt-iter guess x)
   (new-if (good-enough? guess x)
           guess
@@ -44,7 +44,7 @@
 못구하지않나...?
 
 1.7
-#abs가 필요함
+;;abs가 필요함
 (define (good-enough? guess x)
  (< (abs (- (improve guess x) guess))
   (* guess 0.001)))
@@ -69,7 +69,7 @@
   (cube-root-iter 1.0 x))
 
 1.9
-# (+ 4 5) 계산 프로세스 과정
+;; (+ 4 5) 계산 프로세스 과정
 (+ 4 5)
 (inc (+ (dec 4) 5))
 (inc (+ 3 5))
@@ -97,7 +97,7 @@
 9
 
 1.10
-#애커만 함수
+;;애커만 함수
 (A 1 10)
 (A 0 (A 1 9))
 (A 0 (A 0 (A 1 8)))
@@ -176,7 +176,7 @@
 (A 2 (A 1 2))
 (A 2 (A 0 (1 1)))
 (A 2 (A 0 2))
-(A 2 4) #repeat
+(A 2 4) ;;repeat
 ...
 65536
 
@@ -190,11 +190,23 @@
 (h n) = 2^2^~ (n만큼)
 
 1.11
-# n < 3일때 f(n)=n이고, n>=일때 f(n)=f(n-1)+2f(n-2)+3f(n-3)
-# 재귀
+;; n < 3일때 f(n)=n이고, n>=일때 f(n)=f(n-1)+2f(n-2)+3f(n-3)
+;; 재귀
 (define (f n)
   (cond ((< n 3) n)
     (else (+ (f (- n 1))
             (* 2 (f (- n 2)))
             (* 3 (f (- n 3)))))))
-#반복
+;;반복
+(define (f n)
+  (define (f-iter fi-1 fi-2 fi-3 i)
+    (define fi (+ fi-1
+                  (* 2 fi-2)
+                  (* 3 fi-3)))
+    (if (= i n)
+        fi
+        (f-iter fi fi-1 fi-2 (+ i 1))))
+
+  (if (< n 3)
+      n
+      (f-iter 2 1 0 3)))
