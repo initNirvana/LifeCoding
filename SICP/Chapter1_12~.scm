@@ -53,3 +53,32 @@
 (cond ((= b 0) 0)
      ((even? b) (double (* a (halve b))))
      (else (+ a (* a (- b 1))))))
+
+;; 1.18
+(define (double x) (+ x x))
+(define (halve x) (/ x 2))
+
+(define (* a b)
+   (define (iter accumulator a b)
+     (cond ((= b 0) accumulator)
+           ((even? b) (iter accumulator (double a) (halve b)))
+           (else (iter (+ accumulator a) a (- b 1)))))
+   (iter 0 a b))
+;; 1.19
+;; 빈칸 채우기
+(define (square x) (* x x))
+(define (fib n)
+   (fib-iter 1 0 0 1 n))
+ (define (fib-iter a b p q count)
+   (cond ((= count 0) b)
+         ((even? count)
+          (fib-iter a
+                    b
+                    (+ (square p) (square q)) ;; p' 값을 계산
+                    (+ (* 2 p q) (square q)) ;; q' 값을 계산
+                    (/ count 2)))
+         (else (fib-iter (+ (* b q) (* a q) (* a p))
+                         (+ (* b p) (* a q))
+                         p
+                         q
+                         (- count 1)))))
