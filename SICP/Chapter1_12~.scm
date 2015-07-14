@@ -82,3 +82,64 @@
                          p
                          q
                          (- count 1)))))
+;; 1.20
+(gcd 206 40)
+(if (= 40 0) ...)
+(gcd 40 (remainder 206 40))
+(if (= 6 0) ...)
+(gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
+(if (= (remainder 40 (remainder 206 40)) 0) ...)
+(if (= 4 0) ...)
+(gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+(if (= (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) 0) ...)
+(if (= 2 0) ...)
+(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))
+(if (= (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) 0) ...)
+(if (= 0 0) ...)
+(remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+;; 18번
+;; 인자 먼저 계산
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (remainder 4 2))
+(gcd 2 0)
+2
+;; 4번
+;; 1.21
+;; test-divisor은??
+
+;; 1.22
+(define (square x) (* x x))
+
+(define (smallest-divisor n)
+    (find-divisor n 2))
+
+(define (find-divisor n test-divisor)
+    (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (+ test-divisor 1)))))
+
+(define (divides? a b)
+    (= (remainder b a) 0))
+
+(define (prime? n)
+    (= n (smallest-divisor n)))
+
+(define (timed-prime-test n)
+    (start-prime-test n (runtime)))
+
+(define (start-prime-test n start-time)
+    (if (prime? n)
+        (report-prime n (- (runtime) start-time))))
+
+(define (report-prime n elapsed-time)
+    (newline)
+    (display n)
+    (display " *** ")
+    (display elapsed-time))
+;; search-for-primes 구하기 
