@@ -142,4 +142,12 @@
     (display n)
     (display " *** ")
     (display elapsed-time))
-;; search-for-primes 구하기 
+;; search-for-primes 구하기
+(define (search-for-primes first last)
+    (define (search-iter cur last)
+        (if (<= cur last) (timed-prime-test cur))
+        (if (<= cur last) (search-iter (+ cur 2) last)))
+    (search-iter (if (even? first) (+ first 1) first)
+                 (if (even? last) (- last 1) last)))
+;; 1.23
+;; 1.24
