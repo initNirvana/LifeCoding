@@ -150,4 +150,74 @@
     (search-iter (if (even? first) (+ first 1) first)
                  (if (even? last) (- last 1) last)))
 ;; 1.23
+(define r-prime n elapsed-time)
+	(display n)
+	(newline)
+	(display elapsed-time))
 ;; 1.24
+;; 똑같이 검사
+
+;; ex 1.27
+;; 카마이클 수 검사
+(define (square x) (* x x))
+
+(define (expmod base exp m)
+ (cond ((=exp 0) 1)
+  		(even? exp)
+		(remainder (square (expmod base (/ exp 2) m))
+		 			m))
+ 		(else
+		 (remainder (* base (expmod base (- exp 1) m))
+		  			m))))
+
+(define (full-fermat-prime? n)
+ (define (iter a n)
+  (if (= a n) true
+   (if (= (expmod a n n) a) (iter (+ a 1) n) false)))
+ (iter 1 n))
+
+(define (test-fermat-prime n expected)
+ (define (r-result n result expected)
+  (display n)
+  (display ": ")
+  (display result)
+  (display ": ")
+  (display if (eq? result expected) "ok" "fool")))
+	(r-result n (full-fermat-prime? n )expected))
+;; 1.28
+;; 밀러 라빈
+;; expmod에서 뻔하지 않은 제곱근 찾을때는 0이 나오도록
+
+(define (miller-rabin-expmod base exp m)
+ (define (squarmod-with-check x)
+  (define (check-notrival-check-sqrt x square)
+   (if (and (= square 1)
+			(not (= x 1))
+			(not (= x (- m 1))))
+		0
+		square))
+  	(check-notrival-check-sqrt x (remainder (square x) m)))
+ (cond ((=exp 0) 1)
+  	((even? exp ) (squaremod-with-check
+					(miller-rabin-expmod base (/ exp 2) m)))
+	(else
+	 (remainder (* base (miller-rabin-expmod base (- exp 1) m))
+	  			m))))
+
+(define (miller-rabin-test n)
+ (define (try-it a)
+  (define (check-it x)
+   (and (not (= x 0)) (= x 1)))
+  (check-it (miller-rabin-expmod a (- n 1) n))
+  (try-it (+ 1 (random (- n 1))))))
+
+(define (fast-prime? n times)
+ (cond ((= times 0) true)
+  		((miller-rabin-test n) (fast-prime? n (- times 1)))
+		(else false)))
+
+(define (prime? n)
+ (fast-prime? n 100))
+
+
+
