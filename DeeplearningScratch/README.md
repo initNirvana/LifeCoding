@@ -3,6 +3,7 @@
 ![책](https://raw.githubusercontent.com/WegraLee/deep-learning-from-scratch/master/cover_image.jpg)
 
 - 예제 코드 : https://github.com/WegraLee/deep-learning-from-scratch
+- 오탈자 확인 : http://www.hanbit.co.kr/store/books/look.php?p_code=B8475831198
 
 ## 스터디 참여자
 - [@pinkrespect](https://github.com/pinkrespect/DeepLearningFromScratch)
