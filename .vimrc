@@ -33,9 +33,8 @@ set smarttab
 set nowrap
 set clipboard=unnamedplus,autoselect
 set noerrorbells    "에러 알림음 끄기
-
 set laststatus=2
-set nowrapscan      " 찾기에서 파일의 맨 끝에 이르면 계속하여 찾지 않음
+
 set ai          	" 자동 들여쓰기
 set smartindent     " 자동 들여쓰기 "
 set cindent	    	" C언어 자동 들여쓰기
@@ -51,16 +50,20 @@ set nu              " 라인넘버 출력
 set wmnu            " tab 자동완성시 가능한 목록을 보여줌
 set tabstop=4       " 탭간격
 set shiftwidth=4    " 자동 들여쓰기 간격 ( >, >>, <, << 등의 명령어)
+set cursorline
 
 set showmatch       " 매치되는 괄호의 반대쪽을 보여줌
 set title           " 타이틀바에 현재 편집중인 파일을 표시
 set enc=UTF-8       " 인코딩
+set fileencoding=utf-8
 
 set hlsearch        "검색어 강조, set hls도 가능
 set ignorecase      "검색시 대소문자 무시
 set incsearch       "검색 키워드 입력시 한글자 입력할 때마다 점진 검색
-
+set nowrapscan      "찾기에서 파일의 맨 끝에 이르면 계속하여 찾지 않음
 set backspace=eol,start,indent " 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
+set smartcase
+
 
 " 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost *
