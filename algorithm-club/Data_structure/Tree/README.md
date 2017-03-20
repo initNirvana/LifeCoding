@@ -1,7 +1,7 @@
 # 트리 (Tree)
 트리는 나무와 유사하게 계층적 구조(비선형구조)다. 나무와 비슷하게 뿌리노드(루트 노드)와 가지노드(리프노드) 등을 가지고 있다.
 
-<img src="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwibus6wu9bSAhWBwbwKHdpyB_wQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTree_(data_structure)&psig=AFQjCNEjc1PT7ud_8lhN1yz9vT11rHEHHQ&ust=1489596934168931" width"360">
+![Imgur](http://i.imgur.com/ZQekCmL.png)
 이미지는 높이가 3, 크기가 9인 트리다. 앞의 이미지에서 __2__는 루트 노드다. 7은 2와 6의 부모 노드다. 2와 6은 6의 자식 노드가 된다. 레벨은 3이다.
 
 - 서브 트리 : 하나의 노드와 그 노드의 자손들로 이루어진 트리
