@@ -61,3 +61,16 @@ class BinaryTree(object):
         self.len += 1
         return
 
+    def _search(self, root, value):
+        if not root or root.value == value:
+            return root
+        if value < root.value:
+            return self._search(root.left, value)
+        else:
+            return self._search(root.right, value)
+
+    def find_element(self, value):
+        return self._search(self.root, value)
+
+
+
