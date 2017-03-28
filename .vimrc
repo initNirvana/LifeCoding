@@ -12,7 +12,7 @@ Plugin 'https://github.com/scrooloose/nerdtree.git' "Tree filesystem
 Plugin 'Xuyuanp/nerdtree-git-plugin' "git plugin
 Plugin 'kien/ctrlp.vim'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-
+Plugin 'davidhalter/jedi-vim'
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
@@ -21,10 +21,12 @@ nmap <F7> :NERDTree<CR>
 
 color dracula
 
+
 "ESC 대응
 imap jk <Esc>
 imap kj <Esc>
 
+"Tab
 set showmode
 set paste
 set softtabstop=2
@@ -55,7 +57,6 @@ set cursorline
 set showmatch       " 매치되는 괄호의 반대쪽을 보여줌
 set title           " 타이틀바에 현재 편집중인 파일을 표시
 set enc=UTF-8       " 인코딩
-set fileencoding=utf-8
 
 set hlsearch        "검색어 강조, set hls도 가능
 set ignorecase      "검색시 대소문자 무시
@@ -63,7 +64,6 @@ set incsearch       "검색 키워드 입력시 한글자 입력할 때마다 �
 set nowrapscan      "찾기에서 파일의 맨 끝에 이르면 계속하여 찾지 않음
 set backspace=eol,start,indent " 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
 set smartcase
-
 
 " 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost *
