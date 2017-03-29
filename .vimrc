@@ -11,15 +11,12 @@ Plugin 'nathanaelkane/vim-indent-guides' "indent 깊이 선으로 표현
 Plugin 'https://github.com/scrooloose/nerdtree.git' "Tree filesystem
 Plugin 'Xuyuanp/nerdtree-git-plugin' "git plugin
 Plugin 'kien/ctrlp.vim'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 'davidhalter/jedi-vim'
 call vundle#end()            
 filetype plugin indent on " Put your non-Plugin stuff after this line
 
 let g:Powerline_symbols = 'fancy'
 nmap <F7> :NERDTree<CR>
-
-color dracula
 
 
 "ESC 대응

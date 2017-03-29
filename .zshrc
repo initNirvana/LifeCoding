@@ -2,31 +2,18 @@
 export ZSH=/Users/Nirvana/.oh-my-zsh
 setopt correct
 
-eval "$(pyenv init -)"
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 alias fuck='eval $(thefuck $(fc -ln -1))'
 alias compile='g++ -std=c++14 -o' 
 alias flaskcli="python3 ~/github/flask-boilerplate/flask_skeleton.py"
 alias vimrc='vim ~/.vimrc'
 alias LC='cd ~/GitHub/LifeCoding/'
-alias pyinit='eval "$(pyenv init -)"'
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM int    o a shell session *as a function*
-env=~/.ssh/agent.env
-# Jedi
-export PYTHONSTARTUP="$(python -m jedi repl)"
-# Stack
-export PATH="$HOME/.local/bin:$PATH"
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/Users/Nirvana/.local/bin"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="lambda-mod"
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -107,5 +94,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
