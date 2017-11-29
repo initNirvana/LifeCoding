@@ -8,6 +8,13 @@ alias flaskcli="python3 ~/github/flask-boilerplate/flask_skeleton.py"
 alias vimrc='vim ~/.vimrc'
 alias LC='cd ~/GitHub/LifeCoding/'
 
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff="nvim -d"
+alias mux="tmuxinator"
+export EDITOR=/usr/local/bin/nvim
+
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -57,7 +64,17 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx autojump python3 github history-substring-search pip zsh-syntax-highlighting)
+plugins=(
+    git 
+	autojump  
+	history-substring-search 
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+	zsh-completions
+	fasd
+	tmux
+    tmuxinator
+)
 
 # User configuration
 
@@ -94,7 +111,24 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -d "$HOME/.pyenv" ]; then
+  if [ -d "$HOME/.pyenv/bin" ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+  else
+    export PATH="$HOME/.pyenv/shims:$PATH"
+  fi
+  if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init - --no-rehash)"
+    eval "$(pyenv virtualenv-init -)"
+  fi
+fi
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+export PATH="/usr/local/opt/node@6/bin:$PATH"
+export PATH="$PATH:`yarn global bin`"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
